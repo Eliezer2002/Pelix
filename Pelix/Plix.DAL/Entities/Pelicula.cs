@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Pelix.Web.Exception;
-using Pelix.Web.Models.ClasesBases;
+using Pelix.DAL.Core;
+using Pelix.DAL.Exception;
 
-namespace Pelix.Web.Models
+namespace Pelix.DAL.Entities
 {
-    public class PeliculaModel : Cod_peliculaBase
+    public class Pelicula : Cod_peliculaBase
     {
-        private string _txt_desc;
+        private string _txt_desc = "";
         public string? txt_desc { get { return _txt_desc; } 
             set 
             {

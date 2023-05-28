@@ -1,11 +1,13 @@
-﻿using Pelix.Web.Exception;
+﻿using Pelix.DAL.Core;
 using System.ComponentModel.DataAnnotations;
 
-namespace Pelix.Web.Models.ClasesBases
+namespace Pelix.DAL.Entities
 {
-    public class Cod_peliculaBase
+    public class GeneroPelicula : GeneroBase
     {
         [Key]
         public int cod_pelicula { get; set; }
+
+
     }
 }

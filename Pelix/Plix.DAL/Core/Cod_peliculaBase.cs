@@ -1,7 +1,7 @@
-﻿using Pelix.Web.Exception;
+﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Pelix.Web.Models.ClasesBases
+namespace Pelix.DAL.Core
 {
     public class Cod_peliculaBase
     {
