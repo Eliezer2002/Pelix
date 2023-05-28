@@ -1,0 +1,10 @@
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\bin\Debug\netstandard2.1\Pelix.DAL.deps.json
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\bin\Debug\netstandard2.1\Pelix.DAL.dll
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\bin\Debug\netstandard2.1\Pelix.DAL.pdb
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\obj\Debug\netstandard2.1\Pelix.DAL.csproj.AssemblyReference.cache
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\obj\Debug\netstandard2.1\Pelix.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\obj\Debug\netstandard2.1\Pelix.DAL.AssemblyInfoInputs.cache
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\obj\Debug\netstandard2.1\Pelix.DAL.AssemblyInfo.cs
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\obj\Debug\netstandard2.1\Pelix.DAL.csproj.CoreCompileInputs.cache
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\obj\Debug\netstandard2.1\Pelix.DAL.dll
+C:\PruebaPelix\Pelix\Pelix\Plix.DAL\obj\Debug\netstandard2.1\Pelix.DAL.pdb
