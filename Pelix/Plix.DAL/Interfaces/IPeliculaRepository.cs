@@ -1,5 +1,6 @@
 ﻿
 using Pelix.DAL.Entities;
+using Pelix.DAL.Models;
 using System.Collections.Generic;
 
 namespace Pelix.DAL.Interfaces
@@ -8,7 +9,7 @@ namespace Pelix.DAL.Interfaces
     {
         void Save(Pelicula pelicula);
         void Update(Pelicula pelicula);
-        List<Pelicula> GetAll();
+        List<PeliculaModel> GetAll();
         Pelicula GetbyId(int Id);
         void Remove(Pelicula pelicula);
     }

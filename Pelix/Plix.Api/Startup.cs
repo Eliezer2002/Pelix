@@ -5,12 +5,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Pelix.DAL.Interfaces;
+using Pelix.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Plix.Api
+namespace Pelix.Api
 {
     public class Startup
     {
@@ -24,8 +26,15 @@ namespace Plix.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddTransient<IPeliculaRepository, PeliculaRepository>();
+            services.AddTransient<IRentRepository, RentRepository>();
+            services.AddTransient<IRolRepository, RolRepository>();
+            services.AddTransient<ISaleRepository, SaleRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IGeneroPeliculaRepository, GeneroPeliculaRepository>();
+            services.AddTransient<IGeneroRepository, GeneroRepository>();
             services.AddControllers();
+            //services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

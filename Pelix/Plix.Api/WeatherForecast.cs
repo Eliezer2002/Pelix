@@ -1,6 +1,6 @@
 using System;
 
-namespace Plix.Api
+namespace Pelix.Api
 {
     public class WeatherForecast
     {

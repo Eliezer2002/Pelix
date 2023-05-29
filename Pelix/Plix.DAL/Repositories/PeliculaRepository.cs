@@ -5,6 +5,7 @@ using Pelix.DAL.Context;
 using Pelix.DAL.Entities;
 using Pelix.DAL.Exception;
 using Pelix.DAL.Interfaces;
+using Pelix.DAL.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,9 +21,18 @@ namespace Pelix.DAL.Repositories
             this.context = context;
             this.logger = logger;
         }
-        public List<Pelicula> GetAll()
+        public List<PeliculaModel> GetAll()
         {
-            throw new System.NotImplementedException();
+            return new List<PeliculaModel>()
+            {
+                new PeliculaModel() 
+                {   txt_desc= "Hola",
+                    cant_disponibles_alquiler=2,
+                    cant_disponibles_venta=1,
+                    precio_alquiler=3,
+                    precio_venta= 15
+                }
+            };
         }
 
         public Pelicula GetbyId(int Id)
