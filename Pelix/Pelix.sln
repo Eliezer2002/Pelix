@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pelix.Api", "Pelix.Api\Pelix.Api.csproj", "{DF83FAB6-6BBC-425E-8DF4-D97B80D6FC54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pelix.BL", "Pelix.BL\Pelix.BL.csproj", "{382C2B0F-93EB-4BB8-B8DF-23B902CDE267}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pelix.BL", "Pelix.BL\Pelix.BL.csproj", "{382C2B0F-93EB-4BB8-B8DF-23B902CDE267}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pelix.DAL", "Pelix.DAL\Pelix.DAL.csproj", "{EABA313C-84B8-4B19-87EF-92FC96FDDCA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pelix.DAL", "Pelix.DAL\Pelix.DAL.csproj", "{EABA313C-84B8-4B19-87EF-92FC96FDDCA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pelix.SL", "Pelix.SL\Pelix.SL.csproj", "{2855DE08-9EDB-44C8-9709-85F9FA7A0AF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pelix.SL", "Pelix.SL\Pelix.SL.csproj", "{2855DE08-9EDB-44C8-9709-85F9FA7A0AF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pelix.Web", "Pelix.Web\Pelix.Web.csproj", "{5AC0E2C2-0D80-4308-8F70-28EFFAD8EE48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pelix.Web", "Pelix.Web\Pelix.Web.csproj", "{5AC0E2C2-0D80-4308-8F70-28EFFAD8EE48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pelix.Api", "Pelix.Api\Pelix.Api.csproj", "{619298D7-4A41-4B14-AD9C-CF920DA5333C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DF83FAB6-6BBC-425E-8DF4-D97B80D6FC54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF83FAB6-6BBC-425E-8DF4-D97B80D6FC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF83FAB6-6BBC-425E-8DF4-D97B80D6FC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF83FAB6-6BBC-425E-8DF4-D97B80D6FC54}.Release|Any CPU.Build.0 = Release|Any CPU
 		{382C2B0F-93EB-4BB8-B8DF-23B902CDE267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{382C2B0F-93EB-4BB8-B8DF-23B902CDE267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{382C2B0F-93EB-4BB8-B8DF-23B902CDE267}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{5AC0E2C2-0D80-4308-8F70-28EFFAD8EE48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AC0E2C2-0D80-4308-8F70-28EFFAD8EE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AC0E2C2-0D80-4308-8F70-28EFFAD8EE48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{619298D7-4A41-4B14-AD9C-CF920DA5333C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{619298D7-4A41-4B14-AD9C-CF920DA5333C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{619298D7-4A41-4B14-AD9C-CF920DA5333C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{619298D7-4A41-4B14-AD9C-CF920DA5333C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

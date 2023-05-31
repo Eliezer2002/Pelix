@@ -1,4 +1,5 @@
 ﻿using Pelix.DAL.Entities;
+using Pelix.DAL.Models;
 using System.Collections.Generic;
 
 namespace Pelix.DAL.Interfaces
@@ -7,7 +8,7 @@ namespace Pelix.DAL.Interfaces
     {
         void Save(Sale sale);
         void Update(Sale sale);
-        List<Sale> GetAll();
+        List<SaleModel> GetAll();
         Sale GetbyId(int Id);
         void Remove(Sale sale);
     }

@@ -1,5 +1,7 @@
-﻿using Pelix.DAL.Entities;
+﻿using Pelix.DAL.Context;
+using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
+using Pelix.DAL.Models;
 using System;
 using System.Collections.Generic;
 
@@ -7,9 +9,17 @@ namespace Pelix.DAL.Repositories
 {
     public class RolRepository : IRolRepository
     {
-        public List<Rol> GetAll()
+        public List<RolModel> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<RolModel>() 
+            {
+                new RolModel
+                {
+                    cod_rol=1,
+                    sn_activo=1,
+                    txt_desc= "PeliculaNueva"
+                }
+            };
         }
 
         public Rol GetbyId(int Id)

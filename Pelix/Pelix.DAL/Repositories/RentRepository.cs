@@ -1,4 +1,5 @@
 ﻿using Pelix.DAL.Entities;
+using Pelix.DAL.Models;
 using Pelix.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,21 @@ namespace Pelix.DAL.Repositories
 {
     public class RentRepository : IRentRepository
     {
-        public List<Rent> GetAll()
+        public List<RentModel> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<RentModel>()
+            {
+                new RentModel()
+                {
+                    Id = 1,
+                    cod_usuario = 1,
+                    cod_usuario_devolucion = 1,
+                    devuelta = 1,
+                    fecha_devolucion = System.DateTime.Now
+
+                }
+         
+            };
         }
 
         public Rent GetbyId(int Id)

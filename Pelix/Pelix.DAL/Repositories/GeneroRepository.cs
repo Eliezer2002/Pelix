@@ -1,5 +1,6 @@
 ﻿using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
+using Pelix.DAL.Models;
 using System;
 using System.Collections.Generic;
 
@@ -7,9 +8,15 @@ namespace Pelix.DAL.Repositories
 {
     public class GeneroRepository : IGeneroRepository
     {
-        public List<Genero> GetAll()
+        public List<GenerosModel> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<GenerosModel>() {
+            new GenerosModel()
+            {
+                txt_desc= "Cura",
+                cod_genero=1
+            }
+            };
         }
 
         public Genero GetbyId(int Id)

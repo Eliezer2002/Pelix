@@ -1,5 +1,6 @@
 ﻿using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
+using Pelix.DAL.Models;
 using System;
 using System.Collections.Generic;
 
@@ -7,9 +8,22 @@ namespace Pelix.DAL.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public List<User> GetAll()
+        public List<UserModel> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<UserModel>() 
+            {
+                new UserModel() 
+                {
+                    cod_rol=1,
+                    cod_usuario=1,
+                    nro_doc= "Eo",
+                    sn_activo=1,
+                    txt_apellido="Vargas",
+                    txt_nombre= "Elie",
+                    txt_password="123",
+                    txt_user="1"
+                }
+            };
         }
 
         public User GetbyId(int Id)

@@ -1,5 +1,6 @@
 ﻿using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
+using Pelix.DAL.Models;
 using System;
 using System.Collections.Generic;
 
@@ -7,9 +8,19 @@ namespace Pelix.DAL.Repositories
 {
     public class SaleRepository : ISaleRepository
     {
-        public List<Sale> GetAll()
+        public List<SaleModel> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<SaleModel> ()
+            { 
+                new SaleModel()
+                {
+                    Id = 1,
+                    cod_pelicula=1,
+                    cod_usuario=1,
+                    fecha=System.DateTime.Now,
+                    precio=10
+                } 
+            };
         }
 
         public Sale GetbyId(int Id)

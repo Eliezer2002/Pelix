@@ -13,20 +13,22 @@ namespace Pelix.DAL.Repositories
 {
     public class PeliculaRepository : IPeliculaRepository
     {
-        private readonly PelixContext context;
-        private readonly ILogger logger;
+        //private readonly PelixContext context;
+        //private readonly ILogger logger;
 
-        public PeliculaRepository(PelixContext context, ILogger<PeliculaRepository> logger)
-        {
-            this.context = context;
-            this.logger = logger;
-        }
+        //public PeliculaRepository(PelixContext context, ILogger<PeliculaRepository> logger) 
+        //{
+        //    this.context = context;
+        //    this.logger = logger;
+        //}
         public List<PeliculaModel> GetAll()
         {
             return new List<PeliculaModel>()
             {
                 new PeliculaModel() 
-                {   txt_desc= "Hola",
+                {   
+                    cod_pelicula=1,
+                    txt_desc= "Hola",
                     cant_disponibles_alquiler=2,
                     cant_disponibles_venta=1,
                     precio_alquiler=3.2,
@@ -47,19 +49,19 @@ namespace Pelix.DAL.Repositories
 
         public void Save(Pelicula pelicula)
         {
-            try
-            {
-                if (context.peliculas.Any(cd => cd.cod_pelicula == pelicula.cod_pelicula)) 
-                {
-                    throw new PeliculaException("La Pelicula Ya Existe!");
-                }
-                context.peliculas.Add(pelicula);
-                context.SaveChanges();
-            }
-            catch (System.Exception ex)
-            {
-                logger.LogError($" Ocurrio un error {ex.Message}", ex.ToString());
-            }
+            //try
+            //{
+            //    if (context.peliculas.Any(cd => cd.cod_pelicula == pelicula.cod_pelicula)) 
+            //    {
+            //        throw new PeliculaException("La Pelicula Ya Existe!");
+            //    }
+            //    context.peliculas.Add(pelicula);
+            //    context.SaveChanges();
+            //}
+            //catch (System.Exception ex)
+            //{
+            //    logger.LogError($" Ocurrio un error {ex.Message}", ex.ToString());
+            //}
         }
 
         public void Update(Pelicula pelicula)
