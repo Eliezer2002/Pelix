@@ -2,6 +2,7 @@
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
+using Pelix.DAL.Repositories;
 using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,9 +21,10 @@ namespace Pelix.Api.Controllers
         }
         // GET: api/<UserController>
         [HttpGet]
-        public IEnumerable<UserModel> Get()
+        public IActionResult Get()
         {
-            return userRepository.GetAll();
+            var Users = userRepository.GetAll();
+            return Ok(Users);
         }
 
         // GET api/<UserController>/5
@@ -38,6 +40,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Post([FromBody] User user)
         {
             userRepository.Save(user);
+            userRepository.SaveChanges();
             return Ok();
         }
 
@@ -46,6 +49,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Put([FromBody] User user)
         {
             userRepository.Update(user);
+            userRepository.SaveChanges();
             return Ok();
         }
 
@@ -54,6 +58,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Delete([FromBody] User id)
         {
             userRepository.Remove(id);
+            userRepository.SaveChanges();
             return Ok();
         }
     }

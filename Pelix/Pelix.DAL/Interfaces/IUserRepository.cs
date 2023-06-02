@@ -6,12 +6,7 @@ using System.Text;
 
 namespace Pelix.DAL.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepositoryBase<User>
     {
-        void Save(User user);
-        void Update(User user);
-        List<UserModel> GetAll();
-        User GetbyId(int Id);
-        void Remove(User user);
     }
 }

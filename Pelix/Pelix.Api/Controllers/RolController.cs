@@ -2,6 +2,7 @@
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
+using Pelix.DAL.Repositories;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,9 +22,10 @@ namespace Pelix.Api.Controllers
         }
         // GET: api/<RolController>
         [HttpGet]
-        public IEnumerable<RolModel> Get()
+        public IActionResult Get()
         {
-            return rolRepository.GetAll();
+            var rols = rolRepository.GetAll();
+            return Ok(rols);
         }
 
         // GET api/<RolController>/5
@@ -39,6 +41,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Post([FromBody] Rol rol)
         {
             rolRepository.Save(rol);
+            rolRepository.SaveChanges();
             return Ok();
         }
 
@@ -47,6 +50,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Put([FromBody] Rol rol)
         {
             rolRepository.Update(rol);
+            rolRepository.SaveChanges();
             return Ok();
         }
 
@@ -55,6 +59,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Delete([FromBody] Rol rol)
         {
             rolRepository.Remove(rol);
+            rolRepository.SaveChanges();
             return Ok();
         }
     }

@@ -4,12 +4,7 @@ using System.Collections.Generic;
 
 namespace Pelix.DAL.Interfaces
 {
-    public interface IRentRepository
+    public interface IRentRepository : IRepositoryBase<Rent>
     {
-        void Save(Rent rent);
-        void Update(Rent rent);
-        List<RentModel> GetAll();
-        Rent GetbyId(int Id);
-        void Remove(Rent rent);
     }
 }

@@ -40,6 +40,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Post([FromBody] Pelicula pelicula)
         {
             peliculaRepository.Save(pelicula);
+            peliculaRepository.SaveChanges();
             return Ok();
         }
 
@@ -48,6 +49,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Put([FromBody] Pelicula pelicula)
         {
             peliculaRepository.Update(pelicula);
+            peliculaRepository.SaveChanges();
             return Ok();
         }
 
@@ -56,6 +58,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Delete([FromBody] Pelicula id)
         {
             peliculaRepository.Remove(id);
+            peliculaRepository.SaveChanges();
             return Ok();
         }
     }

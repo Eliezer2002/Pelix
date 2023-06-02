@@ -2,6 +2,7 @@
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
+using Pelix.DAL.Repositories;
 using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,9 +21,10 @@ namespace Pelix.Api.Controllers
         }
         // GET: api/<SaleController>
         [HttpGet]
-        public IEnumerable<SaleModel> Get()
+        public IActionResult Get()
         {
-            return saleRepository.GetAll();
+            var Sales = saleRepository.GetAll();
+            return Ok(Sales);
         }
 
         // GET api/<SaleController>/5
@@ -38,6 +40,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Post([FromBody] Sale sale)
         {
             saleRepository.Save(sale);
+            saleRepository.SaveChanges();
             return Ok();
         }
 
@@ -46,6 +49,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Put([FromBody] Sale sale)
         {
             saleRepository.Update(sale);
+            saleRepository.SaveChanges();
             return Ok();
         }
 
@@ -54,6 +58,7 @@ namespace Pelix.Api.Controllers
         public IActionResult Delete([FromBody] Sale id)
         {
             saleRepository.Remove(id);
+            saleRepository.SaveChanges();
             return Ok();
         }
     }

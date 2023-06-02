@@ -5,12 +5,7 @@ using System.Collections.Generic;
 
 namespace Pelix.DAL.Interfaces
 {
-    public interface IPeliculaRepository
+    public interface IPeliculaRepository : IRepositoryBase<Pelicula>
     {
-        void Save(Pelicula pelicula);
-        void Update(Pelicula pelicula);
-        List<PeliculaModel> GetAll();
-        Pelicula GetbyId(int Id);
-        void Remove(Pelicula pelicula);
     }
 }
