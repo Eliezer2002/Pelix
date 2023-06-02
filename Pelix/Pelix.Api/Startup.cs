@@ -34,18 +34,17 @@ namespace Pelix.Api
 
             //Repositories
             services.AddTransient<IPeliculaRepository, PeliculaRepository>();
+            services.AddTransient<IRentRepository, RentRepository>();
+            services.AddTransient<IRolRepository, RolRepository>();
+            services.AddTransient<ISaleRepository, SaleRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             //App Services//
             //services.AddTransient<IPeliculaService, DepartmentService>();
 
 
             //services.AddTransient<IPeliculaRepository, PeliculaRepository>();
-            services.AddTransient<IRentRepository, RentRepository>();
-            services.AddTransient<IRolRepository, RolRepository>();
-            services.AddTransient<ISaleRepository, SaleRepository>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IGeneroPeliculaRepository, GeneroPeliculaRepository>();
-            services.AddTransient<IGeneroRepository, GeneroRepository>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

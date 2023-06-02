@@ -8,6 +8,7 @@ namespace Pelix.DAL.Models
     {
         [Key]
         public int cod_usuario { get; set; }
+        public int cod_rol { get; set; }
         public string? txt_user { get; set; }
         public string? txt_password { get; set; }
         public string? txt_nombre { get; set; }

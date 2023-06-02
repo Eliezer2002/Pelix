@@ -2,7 +2,7 @@
 
 namespace Pelix.DAL.Core
 {
-    public class ModeloBase : Cod_peliculaBase
+    public abstract class ModeloBase
     {
         public decimal precio { get; set; }
         public System.DateTime fecha { get; set; }

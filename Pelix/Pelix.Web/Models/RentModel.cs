@@ -7,6 +7,7 @@ namespace Pelix.Web.Models
     {
         [Key]
         public int Id { get; set; }
+        public int cod_pelicula { get; set; }
         public int cod_usuario { get; set; }
         public byte devuelta { get; set; }
         public System.DateTime? fecha_devolucion { get; set; }

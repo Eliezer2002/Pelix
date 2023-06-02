@@ -9,5 +9,6 @@ namespace Pelix.DAL.Models
         [Key]
         public int Id { get; set; }
         public int cod_usuario { get; set; }
+        public int cod_pelicula { get; set; }
     }
 }

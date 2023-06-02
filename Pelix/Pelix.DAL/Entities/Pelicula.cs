@@ -4,8 +4,10 @@ using Pelix.DAL.Exception;
 
 namespace Pelix.DAL.Entities
 {
-    public class Pelicula : Cod_peliculaBase
+    public class Pelicula 
     {
+        [Key]
+        public int cod_pelicula { get; set; }
         private string _txt_desc = "";
         public string? txt_desc { get { return _txt_desc; } 
             set 

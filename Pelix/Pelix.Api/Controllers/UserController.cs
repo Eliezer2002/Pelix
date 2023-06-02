@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
 using System.Collections.Generic;
@@ -26,27 +27,34 @@ namespace Pelix.Api.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var user = userRepository.GetbyId(id);
+            return Ok(user);
         }
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] User user)
         {
+            userRepository.Save(user);
+            return Ok();
         }
 
         // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut()]
+        public IActionResult Put([FromBody] User user)
         {
+            userRepository.Update(user);
+            return Ok();
         }
 
         // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete()]
+        public IActionResult Delete([FromBody] User id)
         {
+            userRepository.Remove(id);
+            return Ok();
         }
     }
 }

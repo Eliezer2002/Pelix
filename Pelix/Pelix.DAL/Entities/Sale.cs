@@ -8,6 +8,7 @@ namespace Pelix.DAL.Entities
     {
         [Key]
         public int Id { get; set; }
+        public int cod_pelicula { get; set; }
         public int cod_usuario { get; set; }
     }
 }

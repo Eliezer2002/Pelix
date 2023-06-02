@@ -2,7 +2,7 @@
 
 namespace Pelix.Web.Models.ClasesBases
 {
-    public class ModeloBase : Cod_peliculaBase
+    public class ModeloBase 
     {
         public decimal precio { get; set; }
         public System.DateTime fecha { get; set; }

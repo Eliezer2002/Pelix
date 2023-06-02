@@ -1,45 +1,92 @@
-﻿using Pelix.DAL.Context;
+﻿using Microsoft.Extensions.Logging;
+using Pelix.DAL.Context;
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Pelix.DAL.Repositories
 {
     public class RolRepository : IRolRepository
     {
+        private readonly PelixContext context;
+        private readonly ILogger<RolRepository> logger;
+
+        public RolRepository(PelixContext context, ILogger<RolRepository> logger)
+        {
+            this.context = context;
+            this.logger = logger;
+        }
         public List<RolModel> GetAll()
         {
-            return new List<RolModel>() 
+            var rols = context.tRols.Select(cd => new RolModel 
             {
-                new RolModel
-                {
-                    cod_rol=1,
-                    sn_activo=1,
-                    txt_desc= "PeliculaNueva"
-                }
-            };
+                txt_desc = cd.txt_desc,
+                sn_activo = cd.sn_activo,
+                cod_rol = cd.cod_rol
+            }).ToList();
+            return rols;
         }
 
         public Rol GetbyId(int Id)
         {
-            throw new NotImplementedException();
+            return context.tRols.Find(Id);
         }
 
         public void Remove(Rol rol)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Rol Rol = this.GetbyId(rol.cod_rol);
+                context.tRols.Remove(Rol);
+                context.SaveChanges();
+            }
+            catch (System.Exception ex)
+            {
+                logger.LogError($"Error Removiendo el Rol { ex.Message }", ex.ToString());
+            }
+
         }
 
         public void Save(Rol rol)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Rol Rol = new Rol() 
+                {
+                    txt_desc = rol.txt_desc,
+                    cod_rol=rol.cod_rol,
+                    sn_activo= rol.sn_activo
+                };
+                context.tRols.Add(rol);
+                context.SaveChanges();
+            }
+            catch (System.Exception ex)
+            {
+                logger.LogError($"Error Añadiendo el Rol {ex.Message}", ex.ToString());
+            }
+
         }
 
         public void Update(Rol rol)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Rol rolUpdate = this.GetbyId(rol.cod_rol);
+                rolUpdate.txt_desc = rol.txt_desc;
+                rolUpdate.cod_rol = rol.cod_rol;
+                rolUpdate.sn_activo = rol.sn_activo;
+                context.tRols.Update(rolUpdate);
+                context.SaveChanges();
+
+            }
+            catch (System.Exception ex)
+            {
+                logger.LogError($"Error Actualizando el Rol {ex.Message}", ex.ToString());
+            }
+
         }
     }
 }

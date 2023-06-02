@@ -16,13 +16,11 @@ namespace Pelix.DAL.Context
         {
         }
         #region "Registros"
-        public DbSet<Pelicula> peliculas { get; set; }
-        public DbSet<Genero> generos { get; set; }
-        public DbSet<GeneroPelicula> generoPeliculas { get; set; }
-        public DbSet<Rent> rents { get; set; }
-        public DbSet<Rol> rols { get; set; }
-        public DbSet<User> users { get; set; }
-        public DbSet<Sale> sales { get; set; }
+        public DbSet<Pelicula> tPeliculas { get; set; }
+        public DbSet<Rent> tAlquilerPeliculas { get; set; }
+        public DbSet<Rol> tRols { get; set; }
+        public DbSet<User> tUsers { get; set; }
+        public DbSet<Sale> tVentaPeliculas { get; set; }
         #endregion
     }
 }
