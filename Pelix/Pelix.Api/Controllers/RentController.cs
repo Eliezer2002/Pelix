@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pelix.BL.Contract;
+using Pelix.BL.Dtos.Rent;
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
@@ -13,54 +15,86 @@ namespace Pelix.Api.Controllers
     [ApiController]
     public class RentController : ControllerBase
     {
-        private readonly IRentRepository rentRepository;
+        private readonly IRentService rentService;
 
-        public RentController(IRentRepository rentRepository)
+        public RentController(IRentService rentService)
         {
-            this.rentRepository = rentRepository;
+            this.rentService = rentService;
         }
         // GET: api/<RentController>
-        [HttpGet]
+        [HttpGet ("ObtenerRents")]
         public IActionResult Get()
         {
-            var Rents = rentRepository.GetAll();
-            return Ok(Rents);
+            var result = rentService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else 
+            { 
+                return BadRequest(); 
+            }
         }
 
         // GET api/<RentController>/5
-        [HttpGet("{id}")]
+        [HttpGet("\"ObtenerRents\"{id}")]
         public IActionResult Get(int id)
         {
-            var rent = rentRepository.GetbyId(id);
-            return Ok(rent);
+            var result = rentService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // POST api/<RentController>
-        [HttpPost]
-        public IActionResult Post([FromBody] Rent rent)
+        [HttpPost("GuardarRent")]
+        public IActionResult Post([FromBody] RentSaveDto rent)
         {
-            rentRepository.Save(rent);
-            rentRepository.SaveChanges();
-            return Ok();
+            var result = rentService.SaveRent(rent);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
 
         }
 
         // PUT api/<RentController>/5
-        [HttpPut()]
-        public IActionResult Put([FromBody] Rent rent)
+        [HttpPut("ActualizarRent")]
+        public IActionResult Put([FromBody] RentUpdateDto rent)
         {
-            rentRepository.Update(rent);
-            rentRepository.SaveChanges();
-            return Ok();
+            var result = rentService.UpdateRent(rent);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE api/<RentController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromBody] Rent rent)
+        [HttpDelete("EliminarRent")]
+        public IActionResult Delete([FromBody] RentRemoveDto rent)
         {
-            rentRepository.Remove(rent);
-            rentRepository.SaveChanges();
-            return Ok();
+            var result = rentService.RemoveRent(rent);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

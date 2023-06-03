@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pelix.BL\Pelix.BL.csproj" />
     <ProjectReference Include="..\Pelix.DAL\Pelix.DAL.csproj" />
   </ItemGroup>
 

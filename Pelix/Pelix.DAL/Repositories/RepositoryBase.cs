@@ -17,6 +17,7 @@ namespace Pelix.DAL.Repositories
             this.context = context;
             this.myDbset = this.context.Set<TEntity>();
         }
+
         public virtual List<TEntity> GetAll()
         {
             return this.myDbset.ToList();
@@ -29,7 +30,7 @@ namespace Pelix.DAL.Repositories
 
         public virtual void Remove(TEntity entity)
         {
-            this.myDbset.Remove(entity);
+            this.myDbset.Update(entity);
         }
 
         public virtual void Save(TEntity entity)

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pelix.BL.Contract;
+using Pelix.BL.Dtos.Rol;
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
@@ -14,53 +16,85 @@ namespace Pelix.Api.Controllers
     [ApiController]
     public class RolController : ControllerBase
     {
-        private readonly IRolRepository rolRepository;
+        private readonly IRolService rolService;
 
-        public RolController(IRolRepository rolRepository)
+        public RolController(IRolService rolService)
         {
-            this.rolRepository = rolRepository;
+            this.rolService = rolService;
         }
         // GET: api/<RolController>
-        [HttpGet]
+        [HttpGet("ObtenerRols")]
         public IActionResult Get()
         {
-            var rols = rolRepository.GetAll();
-            return Ok(rols);
+            var result = rolService.GetAll();
+            if (result.Success) 
+            { 
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            } 
         }
 
         // GET api/<RolController>/5
-        [HttpGet("{id}")]
+        [HttpGet("\"ObtenerRol\"{id}")]
         public IActionResult Get(int id)
         {
-           var rol = rolRepository.GetbyId(id);
-           return Ok(rol);
+            var result = rolService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // POST api/<RolController>
-        [HttpPost]
-        public IActionResult Post([FromBody] Rol rol)
+        [HttpPost("GuardarRol")]
+        public IActionResult Post([FromBody] RolSaveDto rol)
         {
-            rolRepository.Save(rol);
-            rolRepository.SaveChanges();
-            return Ok();
+            var result = rolService.SaveRol(rol);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // PUT api/<RolController>/5
-        [HttpPut()]
-        public IActionResult Put([FromBody] Rol rol)
+        [HttpPut("ActualizarRol")]
+        public IActionResult Put([FromBody] RolUpdateDto rol)
         {
-            rolRepository.Update(rol);
-            rolRepository.SaveChanges();
-            return Ok();
+            var result = rolService.UpdateRol(rol);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE api/<RolController>/5
-        [HttpDelete()]
-        public IActionResult Delete([FromBody] Rol rol)
+        [HttpDelete("EliminarRol")]
+        public IActionResult Delete([FromBody] RolRemoveDto rol)
         {
-            rolRepository.Remove(rol);
-            rolRepository.SaveChanges();
-            return Ok();
+            var result = rolService.RemoveRol(rol);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

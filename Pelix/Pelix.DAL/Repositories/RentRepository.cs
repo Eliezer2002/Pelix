@@ -19,5 +19,20 @@ namespace Pelix.DAL.Repositories
             this.context = context;
             this.logger = logger;
         }
+        public override void Save(Rent entity)
+        {
+            base.Save(entity);
+            base.SaveChanges();
+        }
+        public override void Remove(Rent entity)
+        {
+            base.Remove(entity);
+            base.SaveChanges();
+        }
+        public override void Update(Rent entity)
+        {
+            base.Update(entity);
+            base.SaveChanges();
+        }
     }
 }

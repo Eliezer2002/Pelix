@@ -8,3 +8,6 @@ C:\PruebaPelix\Pelix\Pelix\Pelix.BL\obj\Debug\netstandard2.1\Pelix.BL.AssemblyIn
 C:\PruebaPelix\Pelix\Pelix\Pelix.BL\obj\Debug\netstandard2.1\Pelix.BL.csproj.CoreCompileInputs.cache
 C:\PruebaPelix\Pelix\Pelix\Pelix.BL\obj\Debug\netstandard2.1\Pelix.BL.dll
 C:\PruebaPelix\Pelix\Pelix\Pelix.BL\obj\Debug\netstandard2.1\Pelix.BL.pdb
+C:\PruebaPelix\Pelix\Pelix\Pelix.BL\bin\Debug\netstandard2.1\Pelix.DAL.dll
+C:\PruebaPelix\Pelix\Pelix\Pelix.BL\bin\Debug\netstandard2.1\Pelix.DAL.pdb
+C:\PruebaPelix\Pelix\Pelix\Pelix.BL\obj\Debug\netstandard2.1\Pelix.BL.csproj.CopyComplete

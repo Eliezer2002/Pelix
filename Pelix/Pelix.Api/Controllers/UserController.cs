@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pelix.BL.Contract;
+using Pelix.BL.Dtos.User;
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
@@ -13,53 +15,85 @@ namespace Pelix.Api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository userRepository;
+        private readonly IUserService userService;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserService userService)
         {
-            this.userRepository = userRepository;
+            this.userService = userService;
         }
         // GET: api/<UserController>
-        [HttpGet]
+        [HttpGet("ObtenerUser")]
         public IActionResult Get()
         {
-            var Users = userRepository.GetAll();
-            return Ok(Users);
+            var result = userService.GetAll();
+            if (result.Success) 
+            { 
+                return Ok(result);
+            }
+            else 
+            { 
+                return BadRequest(); 
+            }
         }
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var user = userRepository.GetbyId(id);
-            return Ok(user);
+            var result = userService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // POST api/<UserController>
         [HttpPost]
-        public IActionResult Post([FromBody] User user)
+        public IActionResult Post([FromBody] UserSaveDto user)
         {
-            userRepository.Save(user);
-            userRepository.SaveChanges();
-            return Ok();
+            var result = userService.SaveUser(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // PUT api/<UserController>/5
         [HttpPut()]
-        public IActionResult Put([FromBody] User user)
+        public IActionResult Put([FromBody] UserUpdateDto user)
         {
-            userRepository.Update(user);
-            userRepository.SaveChanges();
-            return Ok();
+            var result = userService.UpdateUser(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE api/<UserController>/5
         [HttpDelete()]
-        public IActionResult Delete([FromBody] User id)
+        public IActionResult Delete([FromBody] UserRemoveDto id)
         {
-            userRepository.Remove(id);
-            userRepository.SaveChanges();
-            return Ok();
+            var result = userService.RemoveUser(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

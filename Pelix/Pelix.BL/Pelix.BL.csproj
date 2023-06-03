@@ -5,4 +5,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Validations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pelix.DAL\Pelix.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

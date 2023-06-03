@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pelix.BL.Contract;
+using Pelix.BL.Dtos.Sale;
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
@@ -13,53 +15,85 @@ namespace Pelix.Api.Controllers
     [ApiController]
     public class SaleController : ControllerBase
     {
-        private readonly ISaleRepository saleRepository;
+        private readonly ISaleService saleService;
 
-        public SaleController(ISaleRepository saleRepository)
+        public SaleController(ISaleService saleService)
         {
-            this.saleRepository = saleRepository;
+            this.saleService = saleService;
         }
         // GET: api/<SaleController>
-        [HttpGet]
+        [HttpGet ("ObtenerSales")]
         public IActionResult Get()
         {
-            var Sales = saleRepository.GetAll();
-            return Ok(Sales);
+            var result = saleService.GetAll();
+            if (result.Success) 
+            {
+                return Ok(result);
+            }
+            else 
+            { 
+                return BadRequest(); 
+            }
         }
 
         // GET api/<SaleController>/5
-        [HttpGet("{id}")]
+        [HttpGet("\"ObtenerRents\"{id}")]
         public IActionResult Get(int id)
         {
-            var sale= saleRepository.GetbyId(id);
-            return Ok(sale);
+            var result = saleService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // POST api/<SaleController>
-        [HttpPost]
-        public IActionResult Post([FromBody] Sale sale)
+        [HttpPost("GuardarSale")]
+        public IActionResult Post([FromBody] SaleSaveDto sale)
         {
-            saleRepository.Save(sale);
-            saleRepository.SaveChanges();
-            return Ok();
+            var result = saleService.SaveSale(sale);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // PUT api/<SaleController>/5
-        [HttpPut()]
-        public IActionResult Put([FromBody] Sale sale)
+        [HttpPut("ActualizarSale")]
+        public IActionResult Put([FromBody] SaleUpdateDto sale)
         {
-            saleRepository.Update(sale);
-            saleRepository.SaveChanges();
-            return Ok();
+            var result = saleService.UpdateSale(sale);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE api/<SaleController>/5
-        [HttpDelete()]
-        public IActionResult Delete([FromBody] Sale id)
+        [HttpDelete("EliminarSale")]
+        public IActionResult Delete([FromBody] SaleRemoveDto id)
         {
-            saleRepository.Remove(id);
-            saleRepository.SaveChanges();
-            return Ok();
+            var result = saleService.RemoveSale(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Pelix.BL.Contract;
+using Pelix.BL.Services;
 using Pelix.DAL.Context;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Repositories;
@@ -33,17 +35,18 @@ namespace Pelix.Api
             services.AddDbContext<PelixContext>(options => options.UseSqlServer(this.Configuration.GetConnectionString("PelixContext")));
 
             //Repositories
-            services.AddTransient<IPeliculaRepository, PeliculaRepository>();
-            services.AddTransient<IRentRepository, RentRepository>();
-            services.AddTransient<IRolRepository, RolRepository>();
-            services.AddTransient<ISaleRepository, SaleRepository>();
-            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddScoped<IPeliculaRepository, PeliculaRepository>();
+            services.AddScoped<IRentRepository, RentRepository>();
+            services.AddScoped<IRolRepository, RolRepository>();
+            services.AddScoped<ISaleRepository, SaleRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             //App Services//
-            //services.AddTransient<IPeliculaService, DepartmentService>();
-
-
-            //services.AddTransient<IPeliculaRepository, PeliculaRepository>();
+            services.AddTransient<IPeliculaService, PeliculaService>();
+            services.AddTransient<IRentService, RentService>();
+            services.AddTransient<ISaleService, SaleService>();
+            services.AddTransient<IRolService, RolService>();
+            services.AddTransient<IUserService, UserService>();
 
 
             services.AddControllers();

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pelix.BL.Contract;
+using Pelix.BL.Dtos.Pelicula;
 using Pelix.DAL.Entities;
 using Pelix.DAL.Interfaces;
 using Pelix.DAL.Models;
@@ -13,53 +15,86 @@ namespace Pelix.Api.Controllers
     [ApiController]
     public class PeliculaController : ControllerBase
     {
-        private readonly IPeliculaRepository peliculaRepository;
+        private readonly IPeliculaService peliculaService;
 
-        public PeliculaController(IPeliculaRepository _peliculaRepository)
+        public PeliculaController(IPeliculaService peliculaService)
         {
-            peliculaRepository = _peliculaRepository;
+            this.peliculaService = peliculaService;
         }
         // GET: api/<PeliculaController>
-        [HttpGet]
+        [HttpGet("ObtenerPeliculas")]
         public IActionResult Get()
         {
-            var peliculas = peliculaRepository.GetAll();
-            return Ok(peliculas);
+            var result = peliculaService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else 
+            {
+                return BadRequest(result);
+            }
+
         }
 
         // GET api/<PeliculaController>/5
-        [HttpGet("{id}")]
+        [HttpGet("\"ObtenerPelicula\"{id}")]
         public IActionResult Get(int id)
         {
-            var pelicula = peliculaRepository.GetbyId(id);
-            return Ok(pelicula);
+            var result = peliculaService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
 
         // POST api/<PeliculaController>
-        [HttpPost]
-        public IActionResult Post([FromBody] Pelicula pelicula)
+        [HttpPost("GuardarPelicula")]
+        public IActionResult Post([FromBody] PeliculaSaveDto pelicula)
         {
-            peliculaRepository.Save(pelicula);
-            peliculaRepository.SaveChanges();
-            return Ok();
+            var result = peliculaService.SavePelicula(pelicula);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
 
         // PUT api/<PeliculaController>/5
-        [HttpPut()]
-        public IActionResult Put([FromBody] Pelicula pelicula)
+        [HttpPut("ActualizarPelicula")]
+        public IActionResult Put([FromBody] PeliculaUpdateDto pelicula)
         {
-            peliculaRepository.Update(pelicula);
-            peliculaRepository.SaveChanges();
-            return Ok();
+            var result = peliculaService.UpdatePelicula(pelicula);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
 
         // DELETE api/<PeliculaController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromBody] Pelicula id)
+        [HttpDelete("EliminarPelicula")]
+        public IActionResult Delete([FromBody] PeliculaRemoveDto id)
         {
-            peliculaRepository.Remove(id);
-            peliculaRepository.SaveChanges();
-            return Ok();
+            var result = peliculaService.RemovePelicula(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
     }
 }
